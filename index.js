@@ -35,44 +35,15 @@ const multerStorage = multer.diskStorage({
 });
 
 const upload = multer({ storage: multerStorage });
-// const upload = multer({ dest: "/backend/images/"})
 
 app.post("/api/upload", upload.single("file"), async (req, res) => {
-  try {
-    res.status(200).json("File has been uploaded");
-    console.log("uploading");
-    console.log(req.file);
-  } catch(err){
-    res.status(500).json(err);
-  }
+  res.status(200).json("File has been uploaded");
 });
-
-
-app.get("/api/image/:filename", (req, res) => {
-    try {
-      if (fs.existsSync(path.join(__dirname, "./images", req.params.filename))) {
-        res.status(200).sendFile(path.join(__dirname, "./images", req.params.filename));
-      }
-    } catch (err) {
-      res.status(401).json("No image found");
-    }
-  });
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
-
-// app.get("/", (req, res) => {
-//   res.send("Express on vercel");
-// })
-
-// app.use("/api/external", externalRoute);
-// app.use(express.static(path.join(__dirname, "../client", "build")));
-
-// app.get("*", function (_, response) {
-//   response.sendFile(path.join(__dirname, "../client", "build", "index.html"));
-// });
 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Backend is running on localhost:${process.env.PORT}`);
