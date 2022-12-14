@@ -5,6 +5,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
+const externalRoute = require("./routes/external");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
@@ -53,9 +54,11 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
-app.get("/", (req, res) => {
-  res.send("Express on vercel");
-})
+// app.get("/", (req, res) => {
+//   res.send("Express on vercel");
+// })
+
+app.use("/api/external", externalRoute);
 
 // app.use(express.static(path.join(__dirname, "../client", "build")));
 
