@@ -40,6 +40,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
     res.status(200).json("File has been uploaded");
 });
 
+
 app.get("/api/image/:filename", (req, res) => {
     try {
       if (fs.existsSync(path.join(__dirname, "./images", req.params.filename))) {
@@ -61,6 +62,7 @@ app.use("/api/categories", categoryRoute);
 
 // app.use("/api/external", externalRoute);
 
+app.use(express.static(path.join(__dirname, "/backend/images")));
 // app.use(express.static(path.join(__dirname, "../client", "build")));
 
 // app.get("*", function (_, response) {
