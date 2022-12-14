@@ -27,7 +27,7 @@ mongoose
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "images");
+        cb(null, "./images");
     },
     filename: (req, file, cb) => {
         cb(null, req.body.name);
@@ -61,8 +61,6 @@ app.use("/api/categories", categoryRoute);
 // })
 
 // app.use("/api/external", externalRoute);
-
-app.use(express.static(path.join(__dirname, "/backend/images")));
 // app.use(express.static(path.join(__dirname, "../client", "build")));
 
 // app.get("*", function (_, response) {
