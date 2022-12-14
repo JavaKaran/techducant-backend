@@ -63,3 +63,5 @@ app.use("/api/categories", categoryRoute);
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Backend is running on localhost:${process.env.PORT}`);
 });
+
+module.exports = app;
