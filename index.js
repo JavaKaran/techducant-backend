@@ -27,7 +27,7 @@ mongoose
 
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "/backend/images");
+        cb(null, "./images");
     },
     filename: (req, file, cb) => {
         cb(null, req.body.name);
