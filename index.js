@@ -27,7 +27,7 @@ mongoose
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./images");
+        cb(null, "/backend/images");
     },
     filename: (req, file, cb) => {
         cb(null, req.body.name);
@@ -38,7 +38,8 @@ const upload = multer({ storage: storage });
 
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
-  console.log(req.file.filename);
+  console.log("uploading");
+  console.log(req.file);
 });
 
 
