@@ -1,11 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const authRoute = require("./routes/auth");
-const userRoute = require("./routes/users");
-const postRoute = require("./routes/posts");
-const categoryRoute = require("./routes/categories");
-const externalRoute = require("./routes/external");
+const authRoute = require("../routes/auth");
+const userRoute = require("../routes/users");
+const postRoute = require("../routes/posts");
+const categoryRoute = require("../routes/categories");
+const externalRoute = require("../routes/external");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors());
-app.use("/images", express.static(path.join(__dirname, "./images")));
+app.use("/images", express.static(path.join(__dirname, "../images")));
 
 mongoose
     .connect(process.env.MONGO_URL, {
@@ -42,8 +42,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 
 app.get("/api/image/:filename", (req, res) => {
     try {
-      if (fs.existsSync(path.join(__dirname, "./images", req.params.filename))) {
-        res.status(200).sendFile(path.join(__dirname, "./images", req.params.filename));
+      if (fs.existsSync(path.join(__dirname, "../images", req.params.filename))) {
+        res.status(200).sendFile(path.join(__dirname, "../images", req.params.filename));
       }
     } catch (err) {
       res.status(401).json("No image found");
