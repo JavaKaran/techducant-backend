@@ -25,16 +25,17 @@ mongoose
     .then(console.log("Connected to MongoDB"))
     .catch((err) => console.log(err));
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "/backend/images");
-    },
-    filename: (req, file, cb) => {
-        cb(null, req.body.name);
-    },
-});
+// const multerStorage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, "/backend/images");
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, req.body.name);
+//     },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: multerStorage });
+const upload = multer({ dest: "/backend/images/"})
 
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
