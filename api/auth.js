@@ -21,8 +21,8 @@ router.post("/register", async (req, res) => {
     }
 });
 
-router.post("/login", cors(), async (req, res) => {
-    // res.header('Access-Control-Allow-Origin', 'https://tech-ducant-frontend.vercel.app');
+router.post("/login", async (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://tech-ducant-frontend.vercel.app');
     try {
         const user = await User.findOne({ username: req.body.username });
         !user && res.status(400).json("Wrong Credentials");
