@@ -15,7 +15,7 @@ dotenv.config();
 app.use(express.json());
 
 const corsOptions ={
-    origin:'https://tech-ducant-frontend.vercel.app/', 
+    origin:'https://tech-ducant-frontend.vercel.app', 
     credentials:true,            
     optionSuccessStatus:200
 }
