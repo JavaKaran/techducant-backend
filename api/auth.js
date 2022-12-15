@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const cors = require("cors");
 
 router.post("/register", async (req, res) => {
     try{
@@ -22,7 +21,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://tech-ducant-frontend.vercel.app');
     try {
         const user = await User.findOne({ username: req.body.username });
         !user && res.status(400).json("Wrong Credentials");
