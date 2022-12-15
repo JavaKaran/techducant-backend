@@ -13,7 +13,14 @@ const app = express();
 
 dotenv.config();
 app.use(express.json());
-app.use(cors());
+
+const corsOptions ={
+    origin:'https://tech-ducant-frontend.vercel.app/', 
+    credentials:true,            
+    optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
 app.use("/images", express.static(path.join(__dirname, "./images")));
 
 mongoose
